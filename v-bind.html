@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Title</title>
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app-1">
+			<button type="button" v-on:click="del">减少</button>
+			<button type="button" :click="msg">弹出对话框</button>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		let app1=new Vue({
+				 el:'#app-1',
+				 data:{
+					 firstname:'雷',
+				 },
+				 methods:{
+					 del:function(){
+						 alert('减少')
+					 },
+					 msg:function(){
+					 	alert('减少')
+					 }
+			}
+		})
+	</script>
+	
+</html>
