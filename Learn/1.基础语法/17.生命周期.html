@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+  <style>
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="myId">页面还没有被渲染 --- {{msg}}</div>
+  </div>
+</body>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      msg: '页面渲染完毕'
+    },
+    methods: {
+    },
+    beforeCreate() {
+      console.log('beforeCreate')
+      var div = document.getElementById('myId')
+      // 页面没有被渲染，如插值运算符等属于vue实例的东西暂时都视为字符串
+      console.log("div.innerHTML："+div.innerHTML)
+      // data还没有被挂载到vue，此时的vue只是一个空对象。
+      console.log("this.msg："+this.msg)
+    },
+    created() {		//初始化data和methods
+      console.log('created')
+      var div = document.getElementById('myId')
+      // 页面没有被渲染，如插值运算符等属于vue实例的东西暂时都视为字符串
+      console.log("div.innerHTML："+div.innerHTML)
+      // data成功被挂载到vue中，我们可以在这里使用到data中的数据。
+      console.log("data和methods可以访问,this.msg："+this.msg)
+    },
+    beforeMount() {	//初始化数据完成准备挂载渲染到页面
+      console.log('beforeMount')
+      var div = document.getElementById('myId')
+      // 页面没有被渲染，如插值运算符等属于vue实例的东西暂时都视为字符串
+      console.log("div.innerHTML："+div.innerHTML)
+      // data成功被挂载到vue中，我们可以在这里使用到data中的数据。
+      console.log("this.msg："+this.msg)
+    },
+    mounted() {			//渲染到页面
+      console.log('mounted')
+      var div = document.getElementById('myId')
+      // 页面重新渲染
+      console.log("div.innerHTML："+div.innerHTML)
+      // data成功被挂载到vue中，我们可以在这里使用到data中的数据。
+      console.log("this.msg："+this.msg)
+    },
+	beforeUpdate() {	//数据更新之前，data是新的，页面是旧的
+		console.log('beforeUpdate')
+	},
+	updated() {		//数据渲染到页面，data和页面同步
+		console.log('updated')
+	},
+	beforeDestroy() {	//销毁vue实例之前
+		console.log('beforeDestroy')
+	},
+	destroyed() {		//销毁vue实例然后data和methods不可使用
+		console.log('beforeDestroy')
+	}
+  })
+</script>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+	  <h3>通常更好的做法是使用计算属性而不是命令式的 watch 回调</h3>
+    <input type="text" v-model="user.firstName">
+    <input type="text" v-model="user.lastName">
+    <h2>{{user.fullName}}</h2>
+  </div>
+</body>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      user: {
+        firstName: '雷',
+        lastName: '军',
+        fullName: ''
+      }
+    }, //watch 用作监听数据变化然后执行回调函数(newvalue,oldvalue)
+    watch: {
+      'user.firstName': function (newVal, oldVal) {
+		  console.log(newVal+"-"+oldVal);
+        this.user.fullName = this.user.firstName + this.user.lastName
+      }
+    }
+  })
+</script>
+
+</html>

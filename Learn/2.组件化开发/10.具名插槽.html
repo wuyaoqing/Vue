@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <my-com>
+      <span slot="left">返回按钮</span>
+      <span slot="center">搜索框</span>
+      <span slot="right">菜单内容</span>
+    </my-com>
+  </div>
+</body>
+
+
+<template id="myTemp">
+  <div>
+    <slot name="left">我是左边</slot>
+    <slot name="center">我是中间</slot>
+    <slot name="right">我是右边</slot>
+  </div>
+</template>
+
+<script>
+  let myCom = Vue.extend({
+    template: '#myTemp',
+  })
+  
+  let app = new Vue({
+    el: '#app',
+    components: {
+      myCom
+    }
+  })
+</script>
+
+</html>

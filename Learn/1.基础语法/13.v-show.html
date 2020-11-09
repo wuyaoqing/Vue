@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+	  <h3>根据表达式之真假值，切换元素的 display CSS property</h3>
+<!-- 
+v-if是完全不创建DOM元素，而v-show则是创建了DOM元素，仅仅是使用display：none隐藏了该元素。
+当需要频繁的显示、隐藏一些内容时，使用v-show。当我们仅有一次切换，某些v-if场景根本不会显示出来的时候，用v-if。
+-->
+    <div v-show="score >= 90">优秀</div>
+    <div v-show="score >= 75 && score < 90">良好</div>
+    <div v-show="score >= 60 && score < 75">及格</div>
+    <div v-show="score < 60">不及格</div>
+    <button @click="delScore">减分</button>
+  </div>
+</body>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      score: 100
+    },
+    methods: {
+      delScore() {
+        this.score -= 10
+      }
+    }
+  })
+</script>
+
+</html>

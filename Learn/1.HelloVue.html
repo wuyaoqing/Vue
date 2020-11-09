@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>Hello {{name}}</h2>
+	<h3>测试:{{text}}</h3>
+  </div>
+  
+  
+</body>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      name: 'Vue',
+	  text:'我是测试的'
+    }
+  })
+</script>
+</html>

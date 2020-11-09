@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+  <style>
+    /* v-enter 这个是一个时间点，表示动画进入之前，元素的起始状态，此时还没有进入 */
+    /* v-leave-to 这是一个时间点，是动画离开之后，元素的终止状态，此时，元素动画已经结束了 */
+    .div1-enter,
+    .div1-leave-to {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    
+    /* v-enter-active 表示入场动画的时间段 */
+    /* v-leave-active 表示离场动画的时间段 */
+    .div1-enter-active,
+    .div1-leave-active {
+      transition: all 0.8s ease;
+    }
+    /* v-enter 这个是一个时间点，表示动画进入之前，元素的起始状态，此时还没有进入 */
+    /* v-leave-to 这是一个时间点，是动画离开之后，元素的终止状态，此时，元素动画已经结束了 */
+    .div2-enter,
+    .div2-leave-to {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    
+    /* v-enter-active 表示入场动画的时间段 */
+    /* v-leave-active 表示离场动画的时间段 */
+    .div2-enter-active,
+    .div2-leave-active {
+      transition: all 0.2s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="flag = !flag">点击</button>
+    <transition name="div1">
+      <div v-show="flag">这个是第一个div</div>
+    </transition>
+    <transition name="div2">
+      <div v-show="!flag">这个是第二个div</div>
+    </transition>
+  </div>
+</body>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      flag: true
+    },
+    methods: {
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+	  <h5>如果需要传入某个参数，那么这个时候需要括号，并且需要在括号中传入参数</h5>
+    <h2>{{count}}</h2>
+	<!-- 当文本获取焦点触发 -->
+    <input type="text" v-on:focus="alertMsg">
+    <button v-on:click="addCount">+</button>
+	<button type="button" v-on:click="deleteCount">-</button>
+    <!-- v-on的简写方式 -->
+    <!-- <button @click="addCount">点我</button> -->
+	
+	<!-- 监听键盘按键enter -->
+	<input v-on:keyup.enter="submit">
+	
+	<!-- 
+	为了在必要的情况下支持旧浏览器，Vue 提供了绝大多数常用的按键码的别名：
+	    .enter
+	    .tab
+	    .delete (捕获“删除”和“退格”键)
+	    .esc
+	    .space
+	    .up
+	    .down
+	    .left
+	    .right
+ 
+	 -->
+	
+	
+  </div>
+</body>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      count: 0
+    },
+    methods: {
+      addCount() {
+        this.count++
+      },
+	  deleteCount() {
+	    this.count--
+	  },
+      alertMsg() {
+        alert('获取了焦点')
+      },
+	  submit(){
+		  console.log("sumit");
+	  }
+    }
+  })
+</script>
+
+</html>

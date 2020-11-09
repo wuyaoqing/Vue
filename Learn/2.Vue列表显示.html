@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in books">{{item}}</li>
+    </ul>
+	<ol>
+		<li v-for="item in test">{{item}}</li>
+	</ol>
+  </div>
+</body>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      books: ['三体', 'Vue从入门到精通', '颈椎病康复指南', '活着', '母猪的产后护理'],
+	  test:['一年级','二年级']
+    }
+  })
+</script>
+</html>

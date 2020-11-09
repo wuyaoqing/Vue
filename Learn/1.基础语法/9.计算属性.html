@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="firstName">
+    <input type="text" v-model="lastName">
+    <h2>{{fullName}}</h2>
+	<h2>{{reversedMessage}}</h2>
+  </div>
+</body>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      firstName: '张',
+      lastName: '狗子',
+	  message:'Hello'
+    },
+    computed: {		//计算得出数据
+      fullName() {
+        // 写法是个方法，但是使用的时候是作为属性使用的，和data一致。
+        return this.firstName + this.lastName
+      },
+	  reversedMessage:function(){
+		  return this.message.split('').reverse().join('');
+	  }
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+  <link rel="stylesheet" href="../lib/layui.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="layui-form-item">
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" v-model="user.id" placeholder="请输入编号" class="layui-input">
+      </div>
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" v-model="user.name" placeholder="请输入姓名" class="layui-input">
+      </div>
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" v-model="user.age" placeholder="请输入年龄" class="layui-input">
+      </div>
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" v-model="user.gender" placeholder="请输入性别" class="layui-input">
+      </div>
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" v-model="user.remark" placeholder="请输入备注" class="layui-input">
+      </div>
+
+      <div class="layui-input-inline" style="width: 100px;">
+        <button type="button" class="layui-btn" @click="addUser">添加</button>
+      </div>
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" v-model="searchName" placeholder="请输入姓名" class="layui-input">
+      </div>
+
+      <div class="layui-input-inline" style="width: 100px;">
+        <button type="button" class="layui-btn" @click="searchUser">搜索</button>
+      </div>
+
+    </div>
+
+    <table class="layui-table">
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>性别</th>
+          <th>备注</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in userList" :key="item.id">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.age}}</td>
+          <td>{{item.gender | handlerGender}}</td>
+          <td>{{item.remark}}</td>
+          <td>
+            <button type="button" class="layui-btn layui-btn-danger" @click="delUser(item.id)">删除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      userList: [ // 用户列表
+      ],
+      data: [ // 数据库，存放用户数据
+        { id: 1, name: '张三', gender: 1, age: 23, remark: '姓张名三' },
+        { id: 2, name: '李四', gender: 2, age: 24, remark: '姓李名四' },
+        { id: 3, name: '雷哥', gender: 1, age: 25, remark: '姓王名五' },
+        { id: 4, name: '赵六', gender: 2, age: 26, remark: '姓赵名六' },
+        { id: 5, name: '稽哥', gender: 1, age: 18, remark: '我不能再低调了，我是吴彦祖' }
+      ],
+      user: {},
+      searchName: '' // 搜索用的名称
+    },
+    filters: { 	//过滤器
+      handlerGender(gender) {
+        if (gender == 1) {
+          return '男'
+        } else {
+          return '女'
+        }
+      }
+    },
+    methods: {
+      getUserList(name) { // 加载用户数据
+        // 如果name为空，赋予默认值：空字符串
+        if (!name) {
+          name = ''
+        }
+        const dataList = this.data.filter(e => e.name.indexOf(name) >= 0)
+        this.userList = dataList
+      },
+      addUser() {
+        // 添加用户
+        const user = { ...this.user }
+        // 等价于
+        // const user = {id: this.user.id, name: this.user.name.....}
+        // 添加到数据库里
+        this.data.push(user)
+        // 重新加载数据
+        this.getUserList()
+      },
+      delUser(id) {
+        // 查到指定id所在数组索引下标
+        const index = this.userList.findIndex(e => e.id === id)
+        // 删除指定索引位置的数据
+        this.data.splice(index, 1)
+        // 删除成功后，重新加载数据
+        this.getUserList()
+      },
+      searchUser() { // 搜索用户
+        // 遍历用户，找到所有复合条件的用户
+        this.getUserList(this.searchName)
+      }
+    },
+    created() {
+      // 进入页面，组件创建之后，获取数据
+      this.getUserList()
+    }
+  })
+</script>
+
+</html>

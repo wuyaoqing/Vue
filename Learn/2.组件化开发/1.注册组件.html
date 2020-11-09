@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<!-- 第三使用组件模板 -->
+<body>
+  <div id="app">
+    <my-component></my-component>
+    <my-component2></my-component2>
+    <my-component3></my-component3>
+    <my-component4></my-component4>
+	<my-test></my-test>
+  </div>
+  
+  
+</body>
+<template id="temp">
+    <div>
+      <p>我是p标签</p>
+      <h1>我是h1标签</h1>
+      <div style="color: red;">哈哈哈</div>
+    </div>
+  </template>
+
+<!-- 第一步：建立模板 -->  
+<template id="mytest">
+	<div id="divtest">
+		<p>我是测试标签</p>
+	</div>
+</template> 
+  
+<script>
+  var num = 10
+  /**
+   * 1 使用Vue.extend来注册 组件
+   * 按照了Java的开发思想，变量名往往是驼峰规则。
+   * 但是使用组件的时候一般不使用驼峰规则
+   * 而是将驼峰规则全部改成小写，然后中间用-连接
+   */
+  Vue.component('myComponent', Vue.extend({
+    // template就是组件要展示的内容，可以是html标签
+    template: '<h3>这是用extend注册的组件</h3>'
+  }))
+
+  /**
+   * 2.不使用extend去注册组件
+   */
+  Vue.component('myComponent2', {
+    // template就是组件要展示的内容，可以是html标签
+    template: '<div><h3>这是不用extend注册的组件</h3><h3>我是第二个h3</h3></div>'
+  })
+  // 不论使用哪一种注册方式，template属性只能有一个，并且有且仅有一个根节点。
+
+  Vue.component('myComponent3', {
+    // template就是组件要展示的内容，可以是html标签
+    template: `<div><h3>组件中使用外部变量num:${num}</h3></div>`
+  })
+
+  // 3.使用template
+  Vue.component('myComponent4', {
+    template: '#temp'
+  })
+  
+  //---短横线分隔命名组件，使用的时候也需要这样做---
+  Vue.component('my-test',{
+	  template:'#mytest'
+  })
+
+  let app = new Vue({
+    el: '#app'
+  })
+</script>
+
+</html>

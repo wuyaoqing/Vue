@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+ 
+  <div id="app">
+    <my-component></my-component>
+    <my-comp></my-comp>
+  </div>
+  
+  <div id="app2">
+    <my-component></my-component>
+  </div>
+  
+</body>
+
+<script>
+  /**
+   * 注册的是全局组件
+   */
+  Vue.component('myComponent', Vue.extend({
+    // template就是组件要展示的内容，可以是html标签
+    template: '<h3>这是用extend注册的组件</h3>'
+  }))
+
+  let myComp = Vue.extend({
+    // template就是组件要展示的内容，可以是html标签
+    template: '<h3>我是私有组件</h3>'
+  })
+
+
+  let app = new Vue({
+    el: '#app',
+    components: {   //此vue实例注册私有组件
+      'my-comp':myComp
+    }
+  })
+  let app2 = new Vue({
+    el: '#app2'
+  })
+
+</script>
+
+</html>

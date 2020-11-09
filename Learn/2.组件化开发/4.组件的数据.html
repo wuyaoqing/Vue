@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <my-com></my-com>
+  </div>
+</body>
+
+<script>
+  let myCom = Vue.extend({
+    template: `<div>我是组件,{{msg}}</div>`,
+	//下面的写法是错误 一个组件的 data 选项必须是一个函数
+	// data:{
+	// 	 msg: '我是子组件的msg'
+	// }
+	//-----------必须是下面的写法----
+    data() {
+      return {
+        msg: '我是子组件的msg'
+      }
+    }
+	
+  })
+  let app = new Vue({
+    el: '#app',
+    data: {
+      msg: '哈哈哈'
+    },
+    components: {
+      myCom
+    }
+  })
+</script>
+
+</html>

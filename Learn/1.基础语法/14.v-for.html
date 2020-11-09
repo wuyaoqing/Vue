@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+	  <h3>v-for="(item, index)"</h3>
+    <ul>
+      <li v-for="(item, index) in dataList">{{index + ':' + item}}</li>
+    </ul>
+	<h3>v-for="(value, key, index)"</h3>
+    <ul>
+      <li v-for="(value, key, index) in myInfo">{{index}}:{{key}}:{{value}}</li>
+    </ul>
+	<h3>v-for="item in userList"</h3>
+    <ul>
+      <li v-for="item in userList">{{item.id}}--{{item.name}}--{{item.age}}</li>
+    </ul>
+	<h3>v-for="item of userList"</h3>
+	<ul>
+		<li v-for="item of userList" :key='item.id'>{{item.name}}</li>
+	</ul>
+  </div>
+</body>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      dataList: [
+        'Java从入门到精通',
+        'php从入门到精通',
+        'mysql从删库到跑路',
+        'Vue从单身到脱单'
+      ],
+      myInfo: {
+        id: 3,
+        name: '张三',
+        age: 23,
+        hobby: '唱跳rap篮球'
+      },
+      userList: [
+        {id: 3, name: '张三', age: 23},
+        {id: 4, name: '李四', age: 24},
+        {id: 5, name: '王五', age: 25},
+        {id: 6, name: '赵六', age: 26}
+      ]
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <parent-com></parent-com>
+  </div>
+</body>
+
+<script>
+
+  // 1.创建一个子组件
+  let childCom = Vue.extend({
+    template: `
+      <div>我是子组件内容。</div>
+    `
+  })
+
+  //测试子组件,再父组件中使用
+  let childCom2 = Vue.component('child-com2',{
+	  template:`
+	   <div>我是子组件内容2。</div>
+	  `
+  })
+  // 2.创建一个父组件
+  let parentCom = Vue.extend({
+    template: `
+      <div>
+        <h1>我是父组件内容</h1>
+        <child-com></child-com>
+		<child-com2></child-com2>
+      </div>
+    `,
+    components: {
+      'child-com':childCom,
+	  'child-com2':childCom2
+    }
+  })
+
+  let app = new Vue({
+    el: '#app',
+    components: {
+      parentCom
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+  <style>
+    .active {
+      color: red;
+    }
+    .size {
+      font-size: 30px;
+    }
+
+    .h2-border {
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- 方式1：直接通过{}绑定一个类 这个 class 存在与否将取决于数据 property isActive-->
+    <h2 :class="{'active':isActive}">Hello Vue</h2>
+    <!-- 方式2：这种方式可以通过判断，传入多个值 -->
+    <h2 :class="{'active':isActive, 'size': iBig}">Hello Vue</h2>
+    <!-- 方式3：和普通类同时存在，并不冲突 -->
+    <h2 class="h2-border" :class="{'active':isActive, 'size': iBig}">Hello Vue</h2>
+    <!-- 方式4：如果过于复杂，可以放到一个data数组中 -->
+    <h2 class="h2-border" :class="classes">Hello Vue</h2>
+	
+	<!-- 测试绑定class -->
+	<h2 class="h2-border" :class="['active']">Test</h2>
+	
+	<button @click="click">设置big=false</button>
+	<button @click="click2">设置isActive=false</button>
+  </div>
+</body>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data: {
+      isActive: true,  //由此控制style是否加载
+      iBig: true,
+      classes: ['active', 'size']
+    },
+	methods:{
+		click:function(){
+			this.iBig=false
+		},
+		click2:function(){
+			this.isActive=false
+		}
+	}
+  })
+</script>
+</html>

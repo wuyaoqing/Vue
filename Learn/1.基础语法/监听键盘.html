@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+   <input v-on:keyup.enter="submit" :placeholder="pl">
+   <input v-on:keyup.delete="deleteMethod" :placeholder="pl">
+   <input v-on:keyup.alt.67="clear" :placeholder="pl1">
+   <input v-on:click.left="mouseLeft" :placeholder="pl2">
+  </div>
+</body>
+<script>
+	
+	    // .enter
+	    // .tab
+	    // .delete (捕获“删除”和“退格”键)
+	    // .esc
+	    // .space
+	    // .up
+	    // .down
+	    // .left
+	    // .right
+
+  let app = new Vue({
+    el: '#app',
+    data: {
+		pl:'请输入',
+		pl1:'alt+c调用',
+		pl2:'鼠标左键调用'
+    },  
+    methods:{
+		submit(){
+			console.log('submit方法被调用');
+		},
+		deleteMethod(){
+			console.log('delete方法被调用');
+		},
+		clear(){
+			console.log('clear方法被调用');
+		},
+		mouseLeft(){
+			console.log('mouseLeft方法被调用');
+		}
+	}
+  })
+</script>
+
+</html>

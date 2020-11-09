@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父组件传数据到子组件</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+<!-- 使用组件 -->
+  <div id="app">
+    <!-- 第一步，用绑定的方式，将父组件的数据绑定给子组件 
+	属性注意使用 kebab-case 模式-->
+    <my-com v-bind:child-Data='childData'></my-com>
+  </div>
+  
+</body>
+
+<!-- 声明模板 -->
+<template id="myTemp">
+  <div>
+    <span>子组件的数据：{{count}}</span>
+	<span>父组件的数据：{{childData.age}}</span>
+	<span>父组件的数据：{{childData.name}}</span>
+	<ul>
+		<li v-for="item in childData.data">{{item}}</li>
+	</ul>
+	<input type="text" v-model="name" name="" id="" value="" />
+	<label>{{name}}</label>
+  </div>
+</template>
+<!-- js脚本 -->
+<script>
+//声明组件绑定模板
+  let myCom = Vue.extend({
+    template: '#myTemp',
+    data() {
+      return {
+        count: 0,
+		name:''
+      }
+    }, 
+    props: ['childData']  //接收父组件的数据对象,  在 JavaScript 中是 camelCase 的
+  })
+  
+  let app = new Vue({
+    el: '#app',
+    data: {
+	  childData:{
+		  age:26,
+		  name:'qing',
+		  data:[1,2]
+	  }
+    },
+    components: {
+      myCom
+    }
+  })
+</script>
+
+</html>
