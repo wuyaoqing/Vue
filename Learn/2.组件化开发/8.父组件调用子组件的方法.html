@@ -7,24 +7,18 @@
   <title>Document</title>
   <script src="../lib/vue-2.4.0.js"></script>
 </head>
-
 <body>
-	
   <div id="app">
     <button @click="countAdd">点我</button>
     <!-- 第一步，给子组件绑定一个ref 通过ref给某个子组件绑定一个特定的ID-->
     <my-com ref="myComp"></my-com>
   </div>
-  
 </body>
-
 <template id="myTemp">
   <div>
     {{count}}
   </div>
 </template>
-
-
 <script>
   let myCom = Vue.extend({
     template: '#myTemp',
@@ -39,7 +33,6 @@
       }
     }
   })
-  
   let app = new Vue({
     el: '#app',
     methods: {

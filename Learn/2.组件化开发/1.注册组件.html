@@ -15,7 +15,6 @@
     <my-component2></my-component2>
     <my-component3></my-component3>
     <my-component4></my-component4>
-	<my-test></my-test>
   </div>
   
   
@@ -28,12 +27,6 @@
     </div>
   </template>
 
-<!-- 第一步：建立模板 -->  
-<template id="mytest">
-	<div id="divtest">
-		<p>我是测试标签</p>
-	</div>
-</template> 
   
 <script>
   var num = 10
@@ -67,11 +60,6 @@
     template: '#temp'
   })
   
-  //---短横线分隔命名组件，使用的时候也需要这样做---
-  Vue.component('my-test',{
-	  template:'#mytest'
-  })
-
   let app = new Vue({
     el: '#app'
   })

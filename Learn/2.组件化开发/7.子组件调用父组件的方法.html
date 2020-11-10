@@ -14,27 +14,23 @@
     <my-com @alert-msg="alertMsg" ></my-com>
   </div>
 </body>
-
 <!-- 子组件 -->
 <template id="myTemp">
   <div>
     <button @click="handlerMethod">点我</button>
   </div>
 </template>
-
 <script>
 //注册绑定子组件
   let myCom = Vue.extend({
     template: '#myTemp',
     methods: {
       handlerMethod() {
-        // 第一个参数表示要调用的方法。
-        // 第二个参数往后，就是我们需要传递的参数
+        // 第一个参数表示要调用的方法。 第二个参数往后，就是我们需要传递的参数
         this.$emit('alert-msg', '调用')
       }
     }
   })
-  
   let app = new Vue({
     el: '#app',
     data: {
