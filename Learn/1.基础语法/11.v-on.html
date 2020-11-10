@@ -14,29 +14,14 @@
     <h2>{{count}}</h2>
 	<!-- 当文本获取焦点触发 -->
     <input type="text" v-on:focus="alertMsg">
+	<!-- 点击+号 -->
     <button v-on:click="addCount">+</button>
+	<!-- 点击-号 -->
 	<button type="button" v-on:click="deleteCount">-</button>
     <!-- v-on的简写方式 -->
-    <!-- <button @click="addCount">点我</button> -->
-	
+    <button @click="addCount">点我</button>
 	<!-- 监听键盘按键enter -->
 	<input v-on:keyup.enter="submit">
-	
-	<!-- 
-	为了在必要的情况下支持旧浏览器，Vue 提供了绝大多数常用的按键码的别名：
-	    .enter
-	    .tab
-	    .delete (捕获“删除”和“退格”键)
-	    .esc
-	    .space
-	    .up
-	    .down
-	    .left
-	    .right
- 
-	 -->
-	
-	
   </div>
 </body>
 <script>
@@ -53,7 +38,7 @@
 	    this.count--
 	  },
       alertMsg() {
-        alert('获取了焦点')
+		 console.log("获取了焦点");
       },
 	  submit(){
 		  console.log("sumit");

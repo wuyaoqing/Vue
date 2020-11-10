@@ -8,26 +8,22 @@
 </head>
 <body>
   <div id="app">
-    <input type="text" name="name" v-model="name">
-    <h2>{{name}}</h2>
-    <textarea v-model="name"></textarea>
-	
-	<input type="checkbox" id="checkbox" v-model="checked">
-	<label for="checkbox">{{ checked }}</label>
-	
-	<button v-on:click="btnClick">点击我</button>
+    <input type="text" name="name" v-model="user.name">
+    <h2>{{user.name}}</h2>
+	<button v-on:click="btnClick">获取输入</button>
   </div>
 </body>
 <script>
   let app = new Vue({
     el: '#app',
     data: {
-      name: '张三',
-	  checked:true
+     user:{
+		 name:'张三'
+	 }
     },
 	methods:{
 		btnClick(){
-			console.log(this.$data);
+			console.log(JSON.stringify(this.user));
 		}
 	}
   })

@@ -13,6 +13,8 @@
 	<button type="button" v-on:click="hideAndDisplay"  v-text="text2">隐藏</button>
 	<h2 v-if="seen">{{text}}</h2>
 	<h1>{{score}}</h1>
+	
+	<!-- v-if-elseif-else -->
     <div v-if="score >= 90">优秀</div>
     <div v-else-if="score >= 75">良好</div>
     <div v-else-if="score >= 60">及格</div>
@@ -35,11 +37,7 @@
       },
 	  hideAndDisplay(){
 		  this.seen=!this.seen;
-		  if(this.seen){
-			  this.text2='隐藏'
-		  }else{
-			   this.text2='显示'
-		  }
+		  this.text2 = this.seen?'隐藏':'显示';
 	  }
     }
   })

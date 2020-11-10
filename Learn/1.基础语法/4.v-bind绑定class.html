@@ -22,6 +22,7 @@
   <div id="app">
     <!-- 方式1：直接通过{}绑定一个类 这个 class 存在与否将取决于数据 property isActive-->
     <h2 :class="{'active':isActive}">Hello Vue</h2>
+	
     <!-- 方式2：这种方式可以通过判断，传入多个值 -->
     <h2 :class="{'active':isActive, 'size': iBig}">Hello Vue</h2>
     <!-- 方式3：和普通类同时存在，并不冲突 -->
@@ -30,7 +31,8 @@
     <h2 class="h2-border" :class="classes">Hello Vue</h2>
 	
 	<!-- 测试绑定class -->
-	<h2 class="h2-border" :class="['active']">Test</h2>
+	<h3 :class="'active'">绑定一个class</h3>
+	<h2 :class="['active','h2-border']">绑定多个class</h2>
 	
 	<button @click="click">设置big=false</button>
 	<button @click="click2">设置isActive=false</button>

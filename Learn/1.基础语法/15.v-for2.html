@@ -14,6 +14,7 @@
     <input type="text" v-model="user.name" placeholder="请输入name">
     <input type="text" v-model="user.age" placeholder="请输入age">
     <button @click="addUser">添加</button>
+	
     <div v-for="item in userList" :key="item.id">
       <input type="radio" name="user" :value="item.id"> {{item.name}}
     </div>
