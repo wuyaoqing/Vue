@@ -16,7 +16,7 @@
     "font-awesome": "^4.7.0",
     "vue": "^2.5.16",
     "vue-router": "^3.4.5",
-    "xlsx": "^0.16.9"
+    "xlsx": "^0.17.0"
   },
   "engines": {
     "node": ">=6"
