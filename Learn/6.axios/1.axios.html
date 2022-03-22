@@ -11,10 +11,9 @@
 	<body>
 		<div id="app">
 			<h2>{{name}}</h2>
-			<button @click="get">Get</button>
-			<button @click="GetWithConfig">GetWithConfig</button>
-			<button @click="getWithParms">GetWithParms</button>
+			<button @click="Get">Get</button>
 			<button @click="post">Post</button>
+			<button @click="post2">Post2</button>
 			<br />
 			<textarea style="width: 200px;height: 200px;" v-model="areaText"></textarea>
 		</div>
@@ -36,91 +35,55 @@
 				}
 			},
 			methods: {
-				get() { //无参数的get
-					var me = this; //用me指向当前的vue对象
-					var url = 'http://127.0.0.1:53261/api/Default/TestConnect';
-					//请求
-					//axios.get(url)
-					instance.get(url)
-						.then(function(response) {
-							me.areaText = response.data.Msg;
-							console.log(response.data);
-							console.log(response.status);
-							console.log(response.statusText);
-							//console.log(response.headers);
-							// console.log(response.config);
-						})
-						.catch(function(error) {
-							console.log(error.response.data);
-							console.log(error.response.status);
-							console.log(error.response.headers);
-						})
-				}, //axios(config)
-				GetWithConfig() {
+				Get() {
 					var me = this;
 					axios({
 							method: 'GET',
-							baseURL: 'http://127.0.0.1:53261',
-							url: '/api/Default/TestConnect',
-							data: {},
-							params: {},
-							headers: {},
-							timeout: 30000,
-							responseType: 'json', // default
-							// `auth` 表示应该使用 HTTP 基础验证，并提供凭据
-							// 这将设置一个 `Authorization` 头，覆写掉现有的任意使用 `headers` 设置的自定义 `Authorization`头
-							auth: {
-								token: 'Token'
-							},
+							baseURL: 'http://175.178.174.4:8233',
+							url: '/springbootdemo/Hello/hello',
+							params: {userid:666}
 						})
 						.then(function(response) {
-							me.areaText = response.data.Msg;
+							 console.log(response.data);
 						})
 						.catch(function(error) {
-							console.log(error);
+							  console.log(error.response.data);
+							  console.log(error.response.status);
 						})
 				},
-				//有参数的get
-				getWithParms() {
-					var me = this;
-					axios.get('http://127.0.0.1:53261/api/Default/TestConnect2', {
-							params: this.ajaxGetPara
-						})
-						.then(function(response) {
-							me.areaText = response.data.Msg;
-						})
-						.catch(function(error) {
-							console.log(error);
-						})
-						.then(function() {
-							console.log('always executed');
-						})
-				}, //带参数的post
 				post() {
 					var me = this;
+					var postData = {name: '小米',age: 12};
 					var axiosConfig = {
 						method: 'POST',
-						baseURL: 'http://127.0.0.1:53261',
-						url: '/api/Default/TestConnect3',
-						data: {
-							cBarCode: '123456',
-							cWhCode: '0306'
-						},
-						params: {},
-						headers: {
-							Authorization: 'Token'
-						},
-						timeout: 30000,
-//// `responseType` 表示服务器响应的数据类型，可以是 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'						
-						responseType: 'json', // default
+						baseURL: 'http://127.0.0.1:8080',
+						url: '/Hello/hello2',
+						headers: { 'content-type': 'application/x-www-form-urlencoded' },
+						data: JSON.stringify(postData),
+						timeout: 30000
 					};
 					axios(axiosConfig)
-						.then(function(response) {
-							me.areaText = response.data.Msg;
-						})
-						.catch(function(error) {
-							console.log(error);
-						});
+					.then(function(response) {
+						console.log(response);
+					})
+					.catch(function(error) {
+						console.log(error);
+					});
+				},
+				post2() {
+					var axiosConfig = {
+						method: 'POST',
+						baseURL: 'http://127.0.0.1:8080',
+						url: '/Hello/hello2',
+						data: JSON.stringify({name: '小米',age: 12})
+					};
+					axios(axiosConfig)
+					.then(function(response) {
+						console.log(response);
+					})
+					.catch(function(error) {
+						console.log(error);
+					});
 				}
 			}
 		})

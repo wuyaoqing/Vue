@@ -12,11 +12,11 @@
   <div id="app">
 	<h3>v-for="(item, index)"</h3>
     <ul>
-      <li v-for="(item, index) in dataList">{{index + ':' + item}}</li>
+      <li v-for="(item, index) in dataList">{{item}}-{{index}}</li>
     </ul>
 	<h3>v-for="(value, key, index)"</h3>
     <ul>
-      <li v-for="(value, key, index) in myInfo">{{index}}:{{key}}:{{value}}</li>
+      <li v-for="(value, key, index) in myInfo">{{value}}:{{key}}:{{index}}</li>
     </ul>
 	<h3>v-for="item in userList"</h3>
     <ul>

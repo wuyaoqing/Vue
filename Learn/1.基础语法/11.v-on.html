@@ -19,9 +19,10 @@
 	<!-- 点击-号 -->
 	<button type="button" v-on:click="deleteCount">-</button>
     <!-- v-on的简写方式 -->
-    <button @click="addCount">点我</button>
+    <button @click="addCount">点我+</button>
 	<!-- 监听键盘按键enter -->
 	<input v-on:keyup.enter="submit">
+	<button type="button" @click="btnClick()">按钮事件</button>
   </div>
 </body>
 <script>
@@ -36,6 +37,9 @@
       },
 	  deleteCount() {
 	    this.count--
+	  },
+	  btnClick(){
+		  console.log("btnClick");
 	  },
       alertMsg() {
 		 console.log("获取了焦点");

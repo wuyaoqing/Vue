@@ -7,9 +7,10 @@
 				<el-radio v-model="radio" label="2">备选项2</el-radio>
 			</div>
 			<div>
-				<el-radio disabled v-model="radio" label="1">备选项1</el-radio>
-				<el-radio disabled v-model="radio" label="2">备选项2</el-radio>
+				<el-radio :disabled="btnDisabled" v-model="radio" label="1">备选项1</el-radio>
+				<el-radio v-model="radio" label="2">备选项2</el-radio>
 			</div>
+			<hr />
 			<div>
 				<el-radio-group v-model="radiogroup" @change="radioChange">
 					<el-radio :label="3">选项1</el-radio>
@@ -17,24 +18,27 @@
 					<el-radio :label="9">选项3</el-radio>
 				</el-radio-group>
 			</div>
+			<hr />
 			<div>
-				<el-radio-group v-model="radio1">
+				<el-radio-group v-model="radio1" size="small">
 					<el-radio-button label="上海"></el-radio-button>
 					<el-radio-button label="北京"></el-radio-button>
 					<el-radio-button label="广州"></el-radio-button>
 					<el-radio-button label="深圳"></el-radio-button>
 				</el-radio-group>
 			</div>
-			<div>
-				<el-radio v-model="radio1" label="1" border>备选项1</el-radio>
-				<el-radio v-model="radio1" label="2" border>备选项2</el-radio>
+			<div style="margin-top: 20px">
+				<el-radio-group v-model="radio" size="small">
+					<el-radio label="1" border>备选项1</el-radio>
+					<el-radio label="2" border >备选项2</el-radio>
+				</el-radio-group>
 			</div>
 		</div>
 
 		<div>
 			<h3>Checkbox </h3>
 			<el-checkbox v-model="checked1">备选项1</el-checkbox>
-			<el-checkbox v-model="checked2" disabled="">备选项2</el-checkbox>
+			<el-checkbox v-model="checked2">备选项2</el-checkbox>
 			<br />
 			<el-checkbox-group v-model="checkList">
 				<el-checkbox label="A">复选框A</el-checkbox>
@@ -48,7 +52,7 @@
 			<div>
 				<el-row :gutter="20">
 					<el-col :span="4">
-						<el-input v-model="input1" placeholder="请输入"   size="small"></el-input>
+						<el-input v-model="input1" placeholder="请输入" size="small"></el-input>
 					</el-col>
 					<el-col :span="4">
 						<el-input v-model="input2" clearable placeholder="请输入"></el-input>
@@ -57,17 +61,19 @@
 						<el-input v-model="input3" clearable show-password placeholder="请输入密码"></el-input>
 					</el-col>
 					<el-col :span="4">
-						<el-input v-model="input4" clearable suffix-icon="el-icon-date" placeholder="带icon的输入框"></el-input>
+						<el-input v-model="input4" clearable suffix-icon="el-icon-date" placeholder="带icon的输入框">
+						</el-input>
 					</el-col>
 					<el-col :span="4">
-						<el-input v-model="input5" clearable prefix-icon="el-icon-search" placeholder="带icon的输入框"></el-input>
+						<el-input v-model="input5" clearable prefix-icon="el-icon-search" placeholder="带icon的输入框">
+						</el-input>
 					</el-col>
 					<el-col :span="4">
 						<el-input type="textarea" autosize placeholder="请输入" v-model="textarea1"></el-input>
 					</el-col>
 				</el-row>
-				
-				<el-row  :gutter="20"> 
+
+				<el-row :gutter="20">
 					<el-col :span="6">
 						<el-input placeholder="请输入内容" v-model="input6" clearable="" class="input-with-select">
 							<el-select v-model="select" slot="prepend" placeholder="请选择">
@@ -79,8 +85,8 @@
 						</el-input>
 					</el-col>
 					<el-col :span="6">
-						<el-autocomplete v-model="state2" :fetch-suggestions="querySearch" placeholder="输入后匹配输入建议" :trigger-on-focus="false"
-						 @select="handleSelect"></el-autocomplete>
+						<el-autocomplete v-model="state2" :fetch-suggestions="querySearch" placeholder="输入后匹配输入建议"
+							:trigger-on-focus="false" @select="handleSelect"></el-autocomplete>
 					</el-col>
 				</el-row>
 			</div>
@@ -122,19 +128,17 @@
 			    start: '08:30',
 			    step: '00:15',
 			    end: '18:30'
-			  }"
-			 placeholder="选择时间">
+			  }" placeholder="选择时间">
 			</el-time-select>
 		</div>
 
 		<div>
 			<h3>DatePicker </h3>
-			<el-date-picker v-model="beginDate" type="date" placeholder="选择开始日期" 
-			format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd"></el-date-picker>
-			
-			<el-date-picker v-model="endDate" type="date" placeholder="选择结束日期"
-			:picker-options="pickerOptions"
-			format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd"></el-date-picker>
+			<el-date-picker v-model="beginDate" type="date" placeholder="选择开始日期" format="yyyy 年 MM 月 dd 日"
+				value-format="yyyy-MM-dd"></el-date-picker>
+
+			<el-date-picker v-model="endDate" type="date" placeholder="选择结束日期" :picker-options="pickerOptions"
+				format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd"></el-date-picker>
 		</div>
 
 		<div>
@@ -156,7 +160,8 @@
 				</el-form-item>
 				<el-form-item label="活动时间">
 					<el-col :span="11">
-						<el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
+						<el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;">
+						</el-date-picker>
 					</el-col>
 					<el-col class="line" :span="2">-</el-col>
 					<el-col :span="11">
@@ -190,10 +195,10 @@
 			</el-form>
 		</div>
 
-<el-progress :percentage="0"></el-progress>
-<el-progress :percentage="70"></el-progress>
-<el-progress :percentage="100" status="success"></el-progress>
-<el-progress :percentage="50" status="exception"></el-progress>
+		<el-progress :percentage="0"></el-progress>
+		<el-progress :percentage="70"></el-progress>
+		<el-progress :percentage="100" status="success"></el-progress>
+		<el-progress :percentage="50" status="exception"></el-progress>
 
 	</div>
 </template>
@@ -215,6 +220,7 @@
 			};
 			return {
 				restaurants: [],
+				btnDisabled: true,
 				state1: '',
 				state2: '',
 				form: {
@@ -231,20 +237,20 @@
 				TransferDefaultData: [1, 4],
 				beginDate: '',
 				endDate: '',
-				 //合同结束时间需>=开始时间
-				pickerOptions:{
-				  disabledDate(time) {
-					var beginDate = new Date(this.beginDate);
-					var disabledDate = beginDate.setDate((beginDate.getDate()-1));
-					return time.getTime() < disabledDate;
-				  }
+				//合同结束时间需>=开始时间
+				pickerOptions: {
+					disabledDate(time) {
+						var beginDate = new Date(this.beginDate);
+						var disabledDate = beginDate.setDate((beginDate.getDate() - 1));
+						return time.getTime() < disabledDate;
+					}
 				},
 				TimePicker: '',
 				radio: '1',
-				radiogroup: 3,
-				radio1: '上海',
+				radiogroup: 6,
+				radio1: '广州',
 				checked1: true,
-				checked2: true,
+				checked2: false,
 				checkList: ['A', 'B'],
 				input1: '',
 				textarea1: '',
@@ -268,26 +274,27 @@
 			}
 		},
 		methods: {
+			//按钮组radioChange事件
 			radioChange(value) {
 				console.log(value)
 			},
 			onSubmit() {
 				console.log(JSON.stringify(this.form));
 				var me = this;
-				    var axiosConfig = {
-				        method: 'POST',
-				        baseURL: 'http://127.0.0.1:53261',
-				        url: '/api/Default/subMitActivity',
-				        data: this.form
-				    };
-				    axios(axiosConfig)
-				        .then(function(response) {
-				        console.log(response.data);
-				    })
-				        .catch(function(error) {
-				        console.log(error);
-				    });
-				
+				var axiosConfig = {
+					method: 'POST',
+					baseURL: 'http://127.0.0.1:53261',
+					url: '/api/Default/subMitActivity',
+					data: this.form
+				};
+				axios(axiosConfig)
+					.then(function(response) {
+				 	console.log(response.data);
+					})
+					.catch(function(error) {
+						console.log(error);
+					});
+
 			},
 			handleSelect(item) {
 				console.log(item);
@@ -304,16 +311,16 @@
 				];
 			},
 			querySearch(queryString, cb) {
-			        var restaurants = this.restaurants;
-			        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
-			        // 调用 callback 返回建议列表的数据
-			        cb(results);
-			      },
-			      createFilter(queryString) {
-			        return (restaurant) => {
-			          return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-			        };
-			      },
+				var restaurants = this.restaurants;
+				var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+				// 调用 callback 返回建议列表的数据
+				cb(results);
+			},
+			createFilter(queryString) {
+				return (restaurant) => {
+					return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+				};
+			},
 		},
 		mounted() {
 			this.restaurants = this.loadAll();
