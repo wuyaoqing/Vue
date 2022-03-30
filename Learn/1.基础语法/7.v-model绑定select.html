@@ -9,18 +9,19 @@
 <body>
   <div id="app">
     <select v-model="mySelect">
-      <option value="java">Java从入门到精通</option>
-      <option value="python">python从入门到精通</option>
-      <option value="php">php从入门到精通</option>
-      <option value="mysql">mysql从删库到跑路</option>
+      <option value="java">Java</option>
+      <option value="python">python</option>
+      <option value="php">php</option>
+      <option value="mysql">mysql</option>
     </select>
+	<span>{{mySelect}}</span>
   </div>
 </body>
 <script>
   let app = new Vue({
     el: '#app',
     data: {
-      mySelect: 'php'
+      mySelect: ''
     }
   })
 </script>

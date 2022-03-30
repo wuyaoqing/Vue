@@ -28,7 +28,6 @@
     }, //watch 用作监听数据变化然后执行回调函数(newvalue,oldvalue)
     watch: {
       'user.firstName': function (newVal, oldVal) {
-		  console.log(newVal+"-"+oldVal);
         this.user.fullName = this.user.firstName + this.user.lastName
       }
     }

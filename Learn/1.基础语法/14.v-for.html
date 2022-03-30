@@ -14,9 +14,9 @@
     <ul>
       <li v-for="(item, index) in dataList">{{item}}-{{index}}</li>
     </ul>
-	<h3>v-for="(value, key, index)"</h3>
+	<h3>v-for="(item, key, index) 遍历对象"</h3>
     <ul>
-      <li v-for="(value, key, index) in myInfo">{{value}}:{{key}}:{{index}}</li>
+      <li v-for="(item, key, index) in myInfo">{{key}}:{{item}}:{{index}}</li>
     </ul>
 	<h3>v-for="item in userList"</h3>
     <ul>
@@ -26,6 +26,8 @@
 	<ul>
 		<li v-for="item of userList" :key='item.id'>{{item.name}}</li>
 	</ul>
+	<h3>v-for="使用值范围"</h3>
+	<span v-for="n in 10">{{n}}</span>
   </div>
 </body>
 <script>
@@ -33,15 +35,15 @@
     el: '#app',
     data: {
       dataList: [
-        'Java从入门到精通',
-        'php从入门到精通',
-        'mysql从删库到跑路',
-        'Vue从单身到脱单'
+        'Java',
+        'php',
+        'mysql',
+        'Vue'
       ],
       myInfo: {
-        id: 3,
+        id: 1,
         name: '张三',
-        age: 23,
+        age: 2,
         hobby: '唱跳rap篮球'
       },
       userList: [

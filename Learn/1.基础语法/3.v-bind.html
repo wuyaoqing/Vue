@@ -11,13 +11,15 @@
     <a v-bind:href="baiduLink">百度</a>
     <!-- v-bind有简写方式 -->
     <a :href="baiduLink">百度</a>
+	<button :disabled="btnDis">button</button>
   </div>
 </body>
 <script>
   let app = new Vue({
     el: '#app',
     data: {
-      baiduLink: 'http://www.baidu.com'
+      baiduLink: 'http://www.baidu.com',
+	  btnDis:false
     }
   })
 </script>

@@ -8,12 +8,12 @@
 		  <el-button type="warning">警告按钮</el-button>
 		  <el-button type="danger">危险按钮</el-button>
 		  <el-badge :value="12" class="item">
-		    <el-button size="small">评论</el-button>
+		        <el-button size="small">评论</el-button>
 		  </el-badge>
 		</el-row>
 		 
 		<div>
-		  <el-button disabled>禁用按钮</el-button>
+		  <el-button disabled>  禁用按钮</el-button>
 		  <el-button type="text">文字按钮</el-button>
 		  <el-button type="primary">图标按钮<i class="el-icon-upload el-icon--right"></i></el-button>
 		</div>

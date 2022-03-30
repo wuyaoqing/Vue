@@ -21,7 +21,7 @@
     <!-- v-on的简写方式 -->
     <button @click="addCount">点我+</button>
 	<!-- 监听键盘按键enter -->
-	<input v-on:keyup.enter="submit">
+	<input v-on:keyup.enter="submit" :placeholder="txt" v-model="inputvalue">
 	<button type="button" @click="btnClick()">按钮事件</button>
   </div>
 </body>
@@ -29,7 +29,9 @@
   let app = new Vue({
     el: '#app',
     data: {
-      count: 0
+      count: 0,
+	  txt:'监听键盘按键',
+	  inputvalue:''
     },
     methods: {
       addCount() {
@@ -45,7 +47,7 @@
 		 console.log("获取了焦点");
       },
 	  submit(){
-		  console.log("sumit");
+		  console.log(this.inputvalue);
 	  }
     }
   })

@@ -7,12 +7,14 @@
 	</div>
 </template>
 <script>
-	import selectTree from "../components/SelectTree.vue";
+	//组件从main.js注入为全局组件
+	//import selectTree from "@/components/SelectTree.vue";
+	//指向当前vue实例
 	var that;
 	export default {
-		components: {
-			selectTree
-		},
+		// components: {
+		// 	selectTree
+		// },
 		data() {
 			return {
 				selectNodeData: [], //选中的树形节点
@@ -40,7 +42,7 @@
 		},
 		methods: {
 			getData(val) {//将选中的节点赋值到此变量
-				this.selectNodeData = val  
+				that.selectNodeData = val  
 			},
 			GetSelect() { //获取选中
 				console.warn(that.selectNodeData)

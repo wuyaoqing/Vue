@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="../lib/vue-2.4.0.js"></script>
-</head>
-<body>
-  <div id="app">
-    <!-- 方式1：直接绑定对象 -->
-    <h2 :style="{color: 'red', fontSize: '18px'}">Hello Vue</h2>
-  </div>
-</body>
-<script>
-  let app = new Vue({
-    el: '#app',
-    data: {
-    }
-  })
-</script>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<script src="../lib/vue-2.4.0.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 绑定内联样式 -->
+			<h2 :style="{color: 'red', fontSize: '30px'}">Hello Vue</h2>
+			<h2 v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">Hello Vue</h2>
+			<!-- 绑定样式对象 对象语法常常结合返回对象的计算属性使用。-->
+			<h2 v-bind:style="styleObject">绑定样式对象</h2>
+			<h2 v-bind:style="[baseStyles, overridingStyles]">绑定样式对象数组</h2>
+		</div>
+	</body>
+	<script>
+		let app = new Vue({
+			el: '#app',
+			data: {
+				baseStyles: {
+					color: 'blue'
+				},
+				overridingStyles: {
+					fontsize: '20px'
+				},
+				styleObject: {
+					color: 'red',
+					fontsize: '30px'
+				},
+				activeColor: 'red',
+				fontSize: 30
+			}
+		})
+	</script>
 </html>

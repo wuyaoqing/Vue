@@ -15,11 +15,19 @@
 v-if是完全不创建DOM元素，而v-show则是创建了DOM元素，仅仅是使用display：none隐藏了该元素。
 当需要频繁的显示、隐藏一些内容时，使用v-show。
 当我们仅有一次切换，某些v-if场景根本不会显示出来的时候，用v-if。
+
+v-show 的元素始终会被渲染并保留在 DOM 中。
+v-show 只是简单地切换元素的 CSS property display。
+
+一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。
+因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。
+
 -->
     <div v-show="score >= 90">优秀</div>
     <div v-show="score >= 75 && score < 90">良好</div>
     <div v-show="score >= 60 && score < 75">及格</div>
-    <div v-show="score < 60">不及格</div>
+    <div v-show="score >=50 && score<60">不及格</div>
+	<div v-show="score<50">差</div>
     <button @click="delScore">减分</button>
   </div>
 </body>

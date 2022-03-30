@@ -25,8 +25,10 @@
 	
     <!-- 方式2：这种方式可以通过判断，传入多个值 -->
     <h2 :class="{'active':isActive, 'size': iBig}">Hello Vue</h2>
-    <!-- 方式3：和普通类同时存在，并不冲突 -->
+	
+    <!-- 方式3：和普通css类同时存在，并不冲突 -->
     <h2 class="h2-border" :class="{'active':isActive, 'size': iBig}">Hello Vue</h2>
+	
     <!-- 方式4：如果过于复杂，可以放到一个data数组中 -->
     <h2 class="h2-border" :class="classes">Hello Vue</h2>
 	
@@ -44,7 +46,7 @@
     data: {
       isActive: true,  //由此控制style是否加载
       iBig: true,
-      classes: ['active', 'size']
+      classes: ['active', 'size']  //css类数组
     },
 	methods:{
 		click:function(){
