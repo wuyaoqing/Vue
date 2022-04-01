@@ -2,7 +2,7 @@
 	<div>
 		<div>
 			<h3>Message </h3>
-			<el-button @click="open" :plain="true">打开消息</el-button>
+			<el-button :plain="true" @click="open">打开消息</el-button>
 			<el-button :plain="true" @click="open2">成功</el-button>
 			<el-button :plain="true" @click="open3">警告</el-button>
 			<el-button :plain="true" @click="open1">消息</el-button>
@@ -17,40 +17,42 @@
 		
 		<div>
 			<h3>Notification   </h3>
-			<el-button @click="openNTF" :plain="true">Notification</el-button>
+			<el-button @click="openntf" :plain="true">Notification</el-button>
 		</div>
 	</div>
 </template>
 
 <script>
+//Element 为 Vue.prototype 添加了全局方法 $message。
 	export default {
 		data() {
 			return {}
 		},
 		methods: {
-			openNTF(){
+			openntf(){
 				this.$notify({
 					title:'标题',
+					type:'success',
 					message:'内容'
 				})
 			},
-			  open5() {
-			        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-			          confirmButtonText: '确定',
-			          cancelButtonText: '取消',
-			          type: 'warning'
-			        }).then(() => {
-			          this.$message({
-			            type: 'success',
-			            message: '删除成功!'
-			          });
-			        }).catch(() => {
-			          this.$message({
-			            type: 'info',
-			            message: '已取消删除'
-			          });          
-			        });
-			      },
+			open5() {
+				this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+					confirmButtonText: '确定',
+					cancelButtonText: '取消',
+					type: 'warning'
+				}).then(() => {
+					this.$message({
+					type: 'success',
+					message: '删除成功!'
+					});
+				}).catch(() => {
+					this.$message({
+					type: 'info',
+					message: '已取消删除'
+					});          
+				});
+				},
 			openMsb(){
 				this.$alert('这是一段内容', '标题名称', {
 				  confirmButtonText: '确定',

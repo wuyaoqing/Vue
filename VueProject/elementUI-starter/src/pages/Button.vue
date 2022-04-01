@@ -13,7 +13,7 @@
 		</el-row>
 		 
 		<div>
-		  <el-button disabled>  禁用按钮</el-button>
+		  <el-button disabled >  禁用按钮</el-button>
 		  <el-button type="text">文字按钮</el-button>
 		  <el-button type="primary">图标按钮<i class="el-icon-upload el-icon--right"></i></el-button>
 		</div>
@@ -24,7 +24,7 @@
 		  <el-button type="primary" icon="el-icon-delete"></el-button>
 		</el-button-group>
 		
-		<el-button type="primary" :loading="true">加载中</el-button>
+		<el-button type="primary" :loading="loading">加载中</el-button>
 		不同大小
 		<el-button size="medium" class="fa fa-camera-retro">中型按钮</el-button>
 		<el-button size="small">中型按钮</el-button>
@@ -39,6 +39,7 @@
     export default {
 		data(){
 			return{
+				loading:true
 			}
 		},
         methods: {

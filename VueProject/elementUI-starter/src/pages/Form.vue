@@ -76,12 +76,15 @@
 				<el-row :gutter="20">
 					<el-col :span="6">
 						<el-input placeholder="请输入内容" v-model="input6" clearable="" class="input-with-select">
+							<!-- 插槽前缀 -->
 							<el-select v-model="select" slot="prepend" placeholder="请选择">
 								<el-option label="餐厅名" value="1"></el-option>
 								<el-option label="订单号" value="2"></el-option>
 								<el-option label="用户电话" value="3"></el-option>
 							</el-select>
+							<!-- 插槽后置 -->
 							<el-button slot="append" icon="el-icon-search"></el-button>
+							<i slot="prefix" class="el-input__icon el-icon-search"></i>
 						</el-input>
 					</el-col>
 					<el-col :span="6">
@@ -96,17 +99,11 @@
 			<h3>Select </h3>
 			<el-row>
 				<el-col :span="8">
-					<el-select v-model="value" clearable placeholder="请选择">
-						<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-						</el-option>
+					<el-select v-model="value" clearable placeholder="请选择" @change="handleSelect">
+						<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+						<i slot="prefix" class="el-input__icon el-icon-search"></i>
 					</el-select>
-				</el-col>
-				<el-col :span="8">
-					<el-select v-model="value2" multiple placeholder="请选择">
-						<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-						</el-option>
-					</el-select>
-				</el-col>
+				</el-col> 
 			</el-row>
 		</div>
 
@@ -145,10 +142,11 @@
 			<h3>Transfer </h3>
 			<el-transfer v-model="TransferDefaultData" :data="TransferData"></el-transfer>
 		</div>
-
+			
 		<div style="width: 500px;">
 			<h3>Form </h3>
 			<el-form ref="form" :model="form" label-width="80px">
+				
 				<el-form-item label="活动名称">
 					<el-input v-model="form.name"></el-input>
 				</el-form-item>
