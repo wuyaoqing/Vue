@@ -11,48 +11,61 @@
 <body>
 	
   <div id="app">
-    <!-- 第一步，用绑定的方式，将父组件的数据绑定给子组件 -->
-    <my-com v-bind:msg="msg" :data='data'></my-com>
+    <!-- 注意这个child-msg不能使用childMsg -->
+    <my-com :child-msg="parentMsg" :data='data' :obj='object'></my-com>
   </div>
   
 </body>
 
+<!-- 组件模版 -->
 <template id="myTemp">
   <div>
     <span>当前数量：{{count}}</span>
-    <div>{{msg}}</div>
+    <div>{{childMsg}}</div>
 	<ul>
 		<li v-for="item in data">{{item}}</li>
 	</ul>
+	<span>当前对象数据：{{obj.name}}</span>
   </div>
 </template>
+<!-- 组件模版 -->
 
 <script>
-  let myCom = Vue.extend({
+//注册组件
+  let myCom = {
     template: '#myTemp',
     data() {
       return {
-        count: 123
+        count: 1
       }
-    },// 第二步，使用props接收.
-    props: ['msg','data'],
+    },
+    //props: ['msg','data'],// 第二步，使用props接收.
 	//或者指定数据类型
-   //  props: {
-   //    msg: {
-   //      type: String,//String、Number、Boolean、Array、Object、Date、Function、Symbol
-   //      default: '我是默认值，父组件没有传给我msg'
-   //    }
-   //  }
-  })
-  let app = new Vue({
+    props: {
+      childMsg: {
+        type: String,   //String、Number、Boolean、Array、Object、Date、Function、Symbol
+        //default: '我是默认值，父组件没有传给我msg'
+		required:true
+      },
+	  data:Array,
+	  obj:Object
+    }
+  }
+  
+//vue实例
+   new Vue({
     el: '#app',
     data: {
-      msg: '我是父组件的msg',
-	  data:[1,2,3]
+      parentMsg: '我是父组件的msg',
+	  data:[1,2,3],
+	  object:{
+		  name:'mi'
+	  }
     },
     components: {
       myCom
-    }
+    },
+	
   })
 </script>
 

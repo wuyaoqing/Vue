@@ -17,11 +17,11 @@
 <script>
 
   // 1.创建一个子组件
-  let childCom = Vue.extend({
+  let childCom = {
     template: `
       <div>我是子组件内容。</div>
     `
-  })
+  }
 
   //测试子组件,在父组件中使用
   let childCom2 = Vue.component('child-com2',{
@@ -30,7 +30,7 @@
 	  `
   })
   // 2.创建一个父组件
-  let parentCom = Vue.extend({
+  let parentCom = {
     template: `
       <div>
         <h1>我是父组件内容</h1>
@@ -42,7 +42,7 @@
       'child-com':childCom,
 	  'child-com2':childCom2
     }
-  })
+  }
 
   let app = new Vue({
     el: '#app',

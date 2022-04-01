@@ -43,9 +43,14 @@
   /**
    * 2.不使用extend去注册组件
    */
-  Vue.component('myComponent2', {
+  Vue.component('my-component2', {
     // template就是组件要展示的内容，可以是html标签
-    template: '<div><h3>这是不用extend注册的组件</h3><h3>我是第二个h3</h3></div>'
+    template: `
+	<div>
+		<h3>这是不用extend注册的组件</h3>
+		<h3>我是第二个h3</h3>
+	</div>
+	`
   })
   // 不论使用哪一种注册方式，template属性只能有一个，并且有且仅有一个根节点。
 

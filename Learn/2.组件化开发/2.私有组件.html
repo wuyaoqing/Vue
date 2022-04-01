@@ -17,6 +17,7 @@
   
   <div id="app2">
     <my-component></my-component>
+	<!-- <my-comp></my-comp> 不能在此使用私有组件,因为此vue实例没有注册组件-->
   </div>
   
 </body>
@@ -25,20 +26,26 @@
   /**
    * 注册的是全局组件
    */
-  Vue.component('myComponent', Vue.extend({
+  Vue.component('myComponent', {
     // template就是组件要展示的内容，可以是html标签
     template: '<h3>这是用extend注册的组件</h3>'
-  }))
-
-  let myComp = Vue.extend({
-    // template就是组件要展示的内容，可以是html标签
-    template: '<h3>我是私有组件</h3>'
   })
+
+  //使用普通的js对象定义组件
+  let myComp = {
+    // template就是组件要展示的内容，可以是html标签
+	data:function(){
+		return {
+			title:'我是私有组件'
+		}
+	},
+    template: '<h3>{{title}}</h3>'
+  }
 
 
   let app = new Vue({
     el: '#app',
-    components: {   //此vue实例注册私有组件
+    components: {   //此vue实例app注册私有组件
       'my-comp':myComp
     }
   })

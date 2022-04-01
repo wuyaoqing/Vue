@@ -14,6 +14,7 @@
    <input v-on:keyup.delete="deleteMethod" :placeholder="pl3">
    <input v-on:keyup.alt.67="clear" :placeholder="pl1">
    <input v-on:click.left="mouseLeft" :placeholder="pl2">
+   <input @keyup.65="submit" placeholder="a键触发">
   </div>
 </body>
 <script>

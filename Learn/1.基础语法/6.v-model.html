@@ -8,30 +8,54 @@
 	</head>
 	<body>
 		<div id="app">
-			<input type="text" name="name" v-model="user.name">
-			<h2>{{user.name}}</h2>
-			<button v-on:click="btnClick">获取输入</button>
-
 			
-			<div>
-				<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
-				<label for="jack">Jack</label>
-				<input type="checkbox" id="john" value="John" v-model="checkedNames">
-				<label for="john">John</label>
-				<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
-				<label for="mike">Mike</label>
-				<br>
-				<span>Checked names: {{ checkedNames }}</span>
+			<h2>单个文本</h2>
+			<input type="text" name="name" v-model="user.name">
+			<p>{{user.name}}</p>
+			
+			<h2>多行文本</h2>
+			<textarea v-model="message"></textarea>
+			<p>{{message}}</p>
+			
+			<h2>单个复选框绑定布尔值</h2>
+			<input type="checkbox" v-model="checked" id="checkbox"  />
+			<label >{{checked}}</label>
+			
+			<h2>多个复选框绑定同一个数组</h2>
+			<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+			<label for="jack">Jack</label>
+			<input type="checkbox" id="john" value="John" v-model="checkedNames">
+			<label for="john">John</label>
+			<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+			<label for="mike">Mike</label>
+			<br>
+			<span>Checked names: {{ checkedNames }}</span>
+			
+			<h2>单选按钮绑定一个值</h2>
+			<div id="example-4">
+			  <input type="radio" id="one" value="One" v-model="picked">
+			  <label for="one">One</label>
+			  <br>
+			  <input type="radio" id="two" value="Two" v-model="picked">
+			  <label for="two">Two</label>
+			  <br>
+			  <span>Picked: {{ picked }}</span>
 			</div>
-			<div>
-				<input type="radio" id="one" value="One" v-model="picked">
-				<label for="one">One</label>
-				<br>
-				<input type="radio" id="two" value="Two" v-model="picked">
-				<label for="two">Two</label>
-				<br>
-				<span>Picked: {{ picked }}</span>
-			</div>
+			
+			<h2>下拉选择</h2>
+			<select v-model="mySelect">
+				 <option disabled value="">请选择</option>
+			     <option>A</option>
+			     <option>B</option>
+			     <option>C</option>
+			</select>
+			<span>{{mySelect}}</span>
+			
+			<h2>用户输入转换数字</h2>
+			<input v-model.number="age" type="number"/>
+			
+			<h2>trim</h2>
+			<input v-model.trim="msg" type="text"/>
 
 		</div>
 	</body>
@@ -40,10 +64,16 @@
 			el: '#app',
 			data: {
 				user: {
-		 		name: '张三'
+					name: '张三'
 				},
 				checkedNames: [],
-				picked: ''
+				picked: '',
+				checked:false,
+				message:'多行文本',
+				checkedNames:[],
+				mySelect: '',
+				age:'',
+				msg:''
 			},
 			methods: {
 				btnClick() {

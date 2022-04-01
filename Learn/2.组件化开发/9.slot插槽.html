@@ -5,19 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="../lib/vue-2.4.0.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 </head>
 
 <body>
   <div id="app">
-	  <!-- 使用组件将下面的替换到slot中 -->
+	 
     <my-com>
+<!-- 使用组件将下面的替换到匿名slot中 -->
       <h2>我是替换插槽的内容</h2>
       <ul>
-        <li>我也是</li>
-        <li>我也是的</li>
-        <li>俺也一样</li>
+        <li>A</li>
+        <li>B</li>
       </ul>
+<!--  -->	  
     </my-com>
   </div>
 </body>
@@ -33,9 +34,9 @@
 
 
 <script>
-  let myCom = Vue.extend({
+  let myCom = {
     template: '#myTemp',
-  })
+  }
   
   let app = new Vue({
     el: '#app',

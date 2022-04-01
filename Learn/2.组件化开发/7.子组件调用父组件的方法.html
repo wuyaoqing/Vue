@@ -10,36 +10,49 @@
 
 <body>
   <div id="app">
-    <!-- 第一步，在子组件上，使用@符号为该组件绑定一个事件 -->
-    <my-com @alert-msg="alertMsg" ></my-com>
+    <!--注意这个alert-msg不能alertMsg 
+	最好使用xxx-xxx区分方法
+	-->
+    <my-com @alert-msg="alertMsg" @parent-msg="parentMsg"></my-com>
   </div>
 </body>
+
 <!-- 子组件 -->
 <template id="myTemp">
   <div>
     <button @click="handlerMethod">点我</button>
+	<button type="button" @click="handlerMethod2">父方法</button>
   </div>
 </template>
 <script>
+
 //注册绑定子组件
-  let myCom = Vue.extend({
+  let myCom = {
     template: '#myTemp',
     methods: {
       handlerMethod() {
         // 第一个参数表示要调用的方法。 第二个参数往后，就是我们需要传递的参数
-        this.$emit('alert-msg', '调用')
-      }
+        this.$emit('alert-msg', '1','2')
+      },
+	  handlerMethod2() {
+	    this.$emit('parent-msg')
+	  },
     }
-  })
+  }
+  
   let app = new Vue({
     el: '#app',
     data: {
       msg: '我是父组件的msg'
     },
     methods: {
-      alertMsg(msg) {
-        alert('你调用了父组件的方法：'+msg)
-      }
+	//父组件的方法
+	  alertMsg(parm1,parm2) {
+		alert('你调用了父组件的方法：'+parm1+parm2)
+      },
+	  parentMsg(){
+		alert('parentMsg')  
+	  }
     },
     components: {
       myCom

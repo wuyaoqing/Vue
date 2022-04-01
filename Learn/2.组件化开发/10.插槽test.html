@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+	<!-- 父组件 -->
+	<div id="app">
+	  <child-component>
+		  <!-- 单个html插槽 v-slot只能在template使用-->
+		  <!-- <h2 slot="header">单个html插槽</h2> -->
+		  <template v-slot:header>
+		  	  <p>header</p>
+		  </template>
+		  
+		  <!-- v-slot:default 可以不写因为是默认插槽，新版本vue2.6可以简写#default-->
+		  <template #default>
+			  <p>匿名插槽default</p>
+		  </template>
+		  
+		  <!-- v-slot:footer可使用简写#footer -->
+		 <!-- 
+			 <template v-slot:footer>
+				  <p>footer</p>
+			  </template> 
+		  -->
+		  <template #footer>
+		  	<p>可使用简写#footer</p>
+		  </template> 
+		  
+		  
+	  </child-component>
+	</div>
+</body>
+ 
+ <!-- 子组件 -->
+ <template id="temp">
+	 <div class="component">
+	     <div class="header">
+			 <!-- 指定插槽名称header -->
+	         <slot name="header"></slot>
+	     </div>
+	     <div class="main">
+			 <!-- 匿名插槽 -->
+	         <slot></slot>
+	     </div>
+	     <div class="footer">
+			 <!-- 指定插槽名称footer -->
+	         <slot name="footer"></slot>
+	     </div>
+	 </div>
+ </template>
+<script>
+
+	Vue.component('child-component', {
+		template:'#temp'
+	});
+
+	var app = new Vue({
+		el: '#app',
+		data(){
+			return{
+			}
+		}
+	})
+</script>
+
+</html>

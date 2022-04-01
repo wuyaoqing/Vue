@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>作用域插槽</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+	</head>
+	<body>
+		<!--父组件使用子组件的数据-->
+		<div id="app">
+		  <!-- 展示方式一:直接展示数组 v-slot:myslot简写#myslot
+		  slotdata：随意取名，mydata对应子组件的:mydata
+		  -->
+		  <child>
+		    <template #myslot="slotdata">
+		      <ul>
+				  <li v-for="item in slotdata.mydata">{{item}}</li>
+			  </ul>
+			  <p>{{slotdata.msg}}</p>
+		    </template>
+		  </child>
+		</div>
+	</body>
+	
+	
+	<!--第一步：子组件声明绑定的数据:mydata-->
+	<template id="child">
+	  <div>
+	    <slot name="myslot" :mydata="languages" :msg="childMsg"></slot>
+	  </div>
+	</template>
+	
+	<script type="text/javascript">
+		const app = new Vue({
+		  el: "#app",
+		  components: {
+		//注册子组件
+		    child: {
+		      template: "#child",
+		      data() {
+		        return {
+		          languages: ['Java', 'PHP', 'JS','C', 'OC'],
+				  childMsg:'子组件数据'
+		        }
+		      }
+		    }
+		  }
+		})
+	</script>
+</html>
