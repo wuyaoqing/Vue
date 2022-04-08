@@ -8,9 +8,7 @@
 </head>
 <body>
   <div id="app">
-    <ul>
-		<li v-for="item in object" :key="item">{{item}}</li>
-	</ul>
+    <button @click="btnclick">按钮</button>
   </div>
  
 </body>
@@ -25,7 +23,17 @@
 		    }
     },
 	methods:{
-	
+		btnclick(){
+			//执行异步函数then处理返回的结果
+			this.testResult().then(res=>{
+				console.log(res);
+			});
+			console.log("代码在后");
+		},
+		async testResult() {
+			return "hello";
+		}
+		
 	}
   })
   
