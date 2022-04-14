@@ -146,6 +146,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode:'history',//不加url有#
   routes
 })
 
